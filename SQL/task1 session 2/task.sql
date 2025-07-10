@@ -1,59 +1,48 @@
+CREATE DATABASE depi;
+USE depi;
+
+CREATE TABLE Department (
+    DEPNum INT PRIMARY KEY,
+    DEPName NVARCHAR(100),
+    Location NVARCHAR(100)
+);
+
 CREATE TABLE Employee (
-    SSN INT IDENTITY(0,1) PRIMARY KEY,
+    SSN INT PRIMARY KEY,
     FName NVARCHAR(50),
     LName NVARCHAR(50),
     Birthdate DATE,
     Gender CHAR(1),
-    Supervisor_SSN INT NULL,
-    FOREIGN KEY (Supervisor_SSN) REFERENCES Employee(SSN)
-);
-
-CREATE TABLE Department (
-    DEPNum INT PRIMARY KEY,
-    DEPName NVARCHAR(50),
-    Location NVARCHAR(100)
+    Supervisor_SSN INT,
+    DEPNum INT,
+    FOREIGN KEY (Supervisor_SSN) REFERENCES Employee(SSN),
+    FOREIGN KEY (DEPNum) REFERENCES Department(DEPNum)
 );
 
 CREATE TABLE Project (
     PNumber INT PRIMARY KEY,
-    PName NVARCHAR(50),
+    PName NVARCHAR(100),
     Location_City NVARCHAR(100)
 );
 
 CREATE TABLE Dependent (
-    Dependent_Name NVARCHAR(50) PRIMARY KEY,
+    Dependent_Name NVARCHAR(50),
     Gender CHAR(1),
     Birthdate DATE,
     Employee_SSN INT,
-    FOREIGN KEY (Employee_SSN) REFERENCES Employee(SSN)
-);
-
-CREATE TABLE Dependents_Of (
-    SSN INT,
-    Dependent_Name NVARCHAR(50),
-    PRIMARY KEY (SSN, Dependent_Name),
-    FOREIGN KEY (SSN) REFERENCES Employee(SSN),
-    FOREIGN KEY (Dependent_Name) REFERENCES Dependent(Dependent_Name)
-);
-
-CREATE TABLE Works_In (
-    SSN INT,
-    DEPNum INT,
-    PRIMARY KEY (SSN, DEPNum),
-    FOREIGN KEY (SSN) REFERENCES Employee(SSN),
-    FOREIGN KEY (DEPNum) REFERENCES Department(DEPNum)
+    PRIMARY KEY (Employee_SSN, Dependent_Name),
+    FOREIGN KEY (Employee_SSN) REFERENCES Employee(SSN) ON DELETE CASCADE
 );
 
 CREATE TABLE Works_On (
-    DEPNum INT,
+    SSN INT,
     PNumber INT,
     Hours_Worked INT,
-    PRIMARY KEY (DEPNum, PNumber),
-    FOREIGN KEY (DEPNum) REFERENCES Department(DEPNum),
+    PRIMARY KEY (SSN, PNumber),
+    FOREIGN KEY (SSN) REFERENCES Employee(SSN),
     FOREIGN KEY (PNumber) REFERENCES Project(PNumber)
 );
 
--- 8. Create MANAGES table
 CREATE TABLE Manages (
     SSN INT,
     DEPNum INT,
@@ -63,59 +52,43 @@ CREATE TABLE Manages (
     FOREIGN KEY (DEPNum) REFERENCES Department(DEPNum)
 );
 
-INSERT INTO Department VALUES 
-(10, 'IT', 'Cairo'),
-(20, 'HR', 'Alexandria'),
-(30, 'Finance', 'Mansoura');
+CREATE TABLE Dependents_Of (
+    SSN INT,
+    Dependent_Name NVARCHAR(50),
+    PRIMARY KEY (SSN, Dependent_Name),
+    FOREIGN KEY (SSN) REFERENCES Employee(SSN),
+    FOREIGN KEY (SSN, Dependent_Name) REFERENCES Dependent(Employee_SSN, Dependent_Name)
+);
 
-INSERT INTO Employee (FName, LName, Birthdate, Gender, Supervisor_SSN) VALUES
-(N'Ahmed', N'Saad', '1985-01-01', 'M', NULL),     
-(N'Salma', N'Fahmy', '1990-02-02', 'F', 0),        
-(N'Mohamed', N'Gamal', '1988-03-03', 'M', 0),      
-(N'Nour', N'ElSherif', '1975-04-04', 'F', 1),      
-(N'Omar', N'Reda', '1992-05-05', 'M', 1);          
 
-INSERT INTO Project VALUES 
-(1001, N'AI Project', 'Cairo'),
-(1002, N'HR System'', 'Alexandria'),
-(1003, N'Payroll Automation', 'Mansoura');
+INSERT INTO Department VALUES
+(1, N'IT', N'Cairo'),
+(2, N'HR', N'Alexandria');
 
-INSERT INTO Works_In VALUES
-(0, 10),  -- Ahmed → IT in Cairo
-(1, 10),  -- Salma → IT in Cairo
-(2, 20),  -- Mohamed → HR in Alexandria
-(3, 30),  -- Nour → Finance in Mansoura
-(4, 30);  -- Omar → Finance in Mansoura
+INSERT INTO Employee VALUES
+(1001, N'Ahmed', N'Gamal', '1990-05-20', 'M', NULL, 1),
+(1002, N'Sara', N'Mahmoud', '1992-08-14', 'F', 1001, 1),
+(1003, N'Mostafa', N'Hassan', '1985-12-10', 'M', 1001, 2);
+
+INSERT INTO Project VALUES
+(201, N'Payroll System', N'Cairo'),
+(202, N'Attendance Tracker', N'Alexandria');
 
 INSERT INTO Dependent VALUES
-(N'Youssef', 'M', '2010-01-01', 0),
-(N'Menna', 'F', '2012-03-05', 1);
-
-INSERT INTO Dependents_Of VALUES
-(0, N'Youssef'),
-(1, N'Menna');
+(N'Omar', 'M', '2015-06-01', 1001),
+(N'Laila', 'F', '2018-09-15', 1002);
 
 INSERT INTO Works_On VALUES
-(10, 1001, 40),
-(20, 1002, 20),
-(30, 1003, 35);
+(1001, 201, 20),
+(1002, 201, 15),
+(1002, 202, 10),
+(1003, 202, 25);
 
 INSERT INTO Manages VALUES
-(0, 10, '2020-01-01'),  -- Ahmed manages IT
-(2, 20, '2021-06-01');  -- Mohamed manages HR
+(1001, 1, '2020-01-01'),
+(1003, 2, '2021-06-01');
 
-UPDATE Works_In SET DEPNum = 20 WHERE SSN = 4;
+INSERT INTO Dependents_Of VALUES
+(1001, N'Omar'),
+(1002, N'Laila');
 
-DELETE FROM Dependents_Of WHERE Dependent_Name = N'Menna' AND SSN = 1;
-DELETE FROM Dependent WHERE Dependent_Name = N'Menna';
-
-SELECT E.*
-FROM Employee E
-JOIN Works_In W ON E.SSN = W.SSN
-WHERE W.DEPNum = 10;
-
-SELECT E.FName, E.LName, P.PName, W.Hours_Worked
-FROM Employee E
-JOIN Works_In WI ON E.SSN = WI.SSN
-JOIN Works_On W ON WI.DEPNum = W.DEPNum
-JOIN Project P ON W.PNumber = P.PNumber;
