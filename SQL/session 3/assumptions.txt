@@ -1,0 +1,3 @@
+I assumed that the supervisor_SSN can be null because in the high table there are no supervisors assigned to them. However they are still employees so they should exist in the database.
+
+I wished that multiple departments could work on the same project as that would be more realistic but I followed the requirements as specified.
