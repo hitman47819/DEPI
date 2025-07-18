@@ -82,11 +82,10 @@ FROM sales.customers
 GROUP BY state
 ORDER BY customer_count DESC
 -- 19
-select TOP 1 max(prod.list_price) as MaximumPrice, cat.category_name, prod.product_name
+select   prod.list_price as MaximumPrice,  cat.category_name, prod.product_name
 FROM production.products AS prod
 JOIN production.categories AS cat ON prod.category_id = cat.category_id
-GROUP by cat.category_name,prod.product_name
-ORDER BY MaximumPrice DESC;
+where prod.list_price = (select max(list_price) from production.products where category_id = cat.category_id)
 -- 20
 SELECT  store.store_name, COUNT(ord.order_id) AS TotalOrders, store.city
 FROM 
@@ -95,3 +94,4 @@ JOIN
     sales.stores AS store ON ord.store_id = store.store_id
 GROUP BY 
     store.store_name, store.city;
+
