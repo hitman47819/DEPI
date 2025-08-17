@@ -1,14 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\depi\\C#\\bank task\\",
+  "WorkspaceRootPath": "D:\\depi\\C#\\bank task 2 \u0026 3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D7224470-0DA7-4A86-8175-9E666B43B5BE}|bank task\\bank task.csproj|d:\\depi\\c#\\bank task\\bank task\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7224470-0DA7-4A86-8175-9E666B43B5BE}|bank task\\bank task.csproj|solutionrelative:bank task\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D7224470-0DA7-4A86-8175-9E666B43B5BE}|bank task\\bank task.csproj|d:\\depi\\c#\\bank task 2 \u0026 3\\bank task\\bank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7224470-0DA7-4A86-8175-9E666B43B5BE}|bank task\\bank task.csproj|solutionrelative:bank task\\bank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7224470-0DA7-4A86-8175-9E666B43B5BE}|bank task\\bank task.csproj|d:\\depi\\c#\\bank task\\bank task\\bank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7224470-0DA7-4A86-8175-9E666B43B5BE}|bank task\\bank task.csproj|solutionrelative:bank task\\bank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D7224470-0DA7-4A86-8175-9E666B43B5BE}|bank task\\bank task.csproj|d:\\depi\\c#\\bank task 2 \u0026 3\\bank task\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7224470-0DA7-4A86-8175-9E666B43B5BE}|bank task\\bank task.csproj|solutionrelative:bank task\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,26 +26,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "bank.cs",
-              "DocumentMoniker": "D:\\depi\\C#\\bank task\\bank task\\bank.cs",
+              "DocumentMoniker": "D:\\depi\\C#\\bank task 2 \u0026 3\\bank task\\bank.cs",
               "RelativeDocumentMoniker": "bank task\\bank.cs",
-              "ToolTip": "D:\\depi\\C#\\bank task\\bank task\\bank.cs",
+              "ToolTip": "D:\\depi\\C#\\bank task 2 \u0026 3\\bank task\\bank.cs",
               "RelativeToolTip": "bank task\\bank.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAqAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJIAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-12T19:31:54.928Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\depi\\C#\\bank task\\bank task\\Program.cs",
+              "DocumentMoniker": "D:\\depi\\C#\\bank task 2 \u0026 3\\bank task\\Program.cs",
               "RelativeDocumentMoniker": "bank task\\Program.cs",
-              "ToolTip": "D:\\depi\\C#\\bank task\\bank task\\Program.cs",
+              "ToolTip": "D:\\depi\\C#\\bank task 2 \u0026 3\\bank task\\Program.cs",
               "RelativeToolTip": "bank task\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAAVAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAcAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-12T19:22:46.839Z",
               "EditorCaption": ""

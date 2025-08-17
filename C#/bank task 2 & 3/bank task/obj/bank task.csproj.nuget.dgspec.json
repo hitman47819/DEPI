@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\depi\\C#\\bank task\\bank task\\bank task.csproj": {}
+    "D:\\depi\\C#\\bank task 2 & 3\\bank task\\bank task.csproj": {}
   },
   "projects": {
-    "D:\\depi\\C#\\bank task\\bank task\\bank task.csproj": {
+    "D:\\depi\\C#\\bank task 2 & 3\\bank task\\bank task.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\depi\\C#\\bank task\\bank task\\bank task.csproj",
+        "projectUniqueName": "D:\\depi\\C#\\bank task 2 & 3\\bank task\\bank task.csproj",
         "projectName": "bank task",
-        "projectPath": "D:\\depi\\C#\\bank task\\bank task\\bank task.csproj",
+        "projectPath": "D:\\depi\\C#\\bank task 2 & 3\\bank task\\bank task.csproj",
         "packagesPath": "C:\\Users\\Kayan\\.nuget\\packages\\",
-        "outputPath": "D:\\depi\\C#\\bank task\\bank task\\obj\\",
+        "outputPath": "D:\\depi\\C#\\bank task 2 & 3\\bank task\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Kayan\\AppData\\Roaming\\NuGet\\NuGet.Config",
