@@ -59,7 +59,7 @@ namespace bank_task_4
             }
 
             customers = new List<Customer>();
-
+            ApplyInterestToAllSavingAccounts();
             Console.WriteLine($"Welcome to {Name} bank \n what do you want to do:");
         }
 
@@ -127,6 +127,16 @@ namespace bank_task_4
                 }
             }
             return found;
+        }
+        public void ApplyInterestToAllSavingAccounts()
+        {
+            foreach (var customer in Customers)
+            {
+                foreach (var acc in customer.Accounts.OfType<Account.SavingAccount>())
+                {
+                    acc.ApplyMonthlyInterest();
+                }
+            }
         }
         public void BankReport()
         {

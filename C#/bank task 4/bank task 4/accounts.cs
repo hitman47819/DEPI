@@ -16,6 +16,7 @@ namespace bank_task_4
         public decimal Balance { get; internal set; }
         public List<Transaction> Transactions { get; set; } = new List<Transaction>();
         public string type { get; private set; }
+        public DateTime LastInterestApplied { get; private set; }
 
         protected Account()
         {
@@ -47,10 +48,14 @@ namespace bank_task_4
 
             public void ApplyMonthlyInterest()
             {
-                decimal monthlyRate = InterestRate / 12;
-                decimal interest = Balance * monthlyRate;
-                Balance += interest;
-                Transactions.Add(new Transaction("Interest", interest, null, AccountNumber));
+                if ((DateTime.Now - LastInterestApplied).TotalDays >= 30)
+                {
+                    decimal monthlyRate = InterestRate / 12;
+                    decimal interest = Balance * monthlyRate;
+                    Balance += interest;
+                    Transactions.Add(new Transaction("Interest", interest, null, AccountNumber));
+                    LastInterestApplied = DateTime.Now;
+                }
             }
         }
     }
