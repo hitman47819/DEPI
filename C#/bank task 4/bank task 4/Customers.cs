@@ -17,7 +17,15 @@ namespace bank_task_4
         public string Ssn { get; private set; }
         public DateTime BirthDate { get; private set; }
         public List<Account> Accounts { get; set; } = new List<Account>();
-        public decimal GetTotalBalance() => Accounts.Sum(acc => acc.Balance);
+        public decimal GetTotalBalance()
+        {
+            decimal totalBalance = 0;
+            foreach (var acc in Accounts)
+            {
+                totalBalance += acc.Balance;
+            }
+            return totalBalance;
+        }
 
         public Customer(string name, string ssn, DateTime birthdate )
         {
@@ -47,7 +55,7 @@ namespace bank_task_4
            
                 return nationalID != null
                 && nationalID.Length == 14
-                && nationalID.All(char.IsDigit);
+                && nationalID.All(char.IsDigit)&&nationalID[1]!='-';
         }
 
     }

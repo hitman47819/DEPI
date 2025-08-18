@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +17,28 @@ namespace bank_task_4
         {
             Console.WriteLine("Welcome to your bank please enter the bank name and id:");
             Name = Console.ReadLine();
+            while (string.IsNullOrEmpty(Name))
+            {
+                Console.WriteLine("Bank name cannot be empty. Please enter a valid name:");
+                Name = Console.ReadLine();
+            }
             Id = Convert.ToInt32(Console.ReadLine());
+            bool validId = true ;
+            if (Id <= 0) validId = false;
+            while (!validId)
+            {
+                Console.WriteLine("Please enter a positive bank ID:");
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int id) && id > 0)
+                {
+                    Id = id;
+                    validId = true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid ID. Please enter a positive number.");
+                }
+            }
             customers = new List<Customer>();
 
             Console.WriteLine($"Welcome to {Name} bank \n what do you want to do:");
@@ -53,12 +73,25 @@ namespace bank_task_4
         }
         public void DeleteCustomer(int customerId)
         {
-            var customer = customers.FirstOrDefault(c => c.Id == customerId);
+            Customer customer = null;
+            foreach (var c in customers)
+            {
+                if (c.Id == customerId)
+                {
+                    customer = c;
+                    break;
+                }
+            }
             if (customer == null) throw new InvalidOperationException("Customer not found.");
 
-            if (customer.Accounts.Any(acc => acc.Balance != 0))
-               
-                throw new InvalidOperationException("Cannot delete customer with non-zero account balances.");
+            foreach (var acc in customer.Accounts)
+            {
+                if (acc.Balance != 0)
+                {
+                    throw new InvalidOperationException("Cannot delete customer with non-zero account balances.");
+
+                }
+            }
 
             customers.Remove(customer);
         }
