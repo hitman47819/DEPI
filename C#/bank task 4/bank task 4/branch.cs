@@ -143,18 +143,6 @@ namespace bank_task_4
                 Console.WriteLine();
             }
         }
-        public void DeleteCustomers(string value, bool type)
-        {
-            for (int i = customers.Count - 1; i >= 0; i--)
-            {
-                var c = customers[i];
-                if (type && c.Name == value || !type && c.Ssn == value)
-                {
-                    Console.WriteLine($"{c.Id} - {c.Name} - {c.Ssn} - {c.BirthDate}");
-                    customers.RemoveAt(i);
-                    Console.WriteLine("Removed");
-                }
-            }
-        }
+       
     }
 }

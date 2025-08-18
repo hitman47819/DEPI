@@ -55,7 +55,7 @@ namespace bank_task_4
            
                 return nationalID != null
                 && nationalID.Length == 14
-                && nationalID.All(char.IsDigit)&&nationalID[1]!='-';
+                && nationalID.All(char.IsDigit);
         }
 
     }

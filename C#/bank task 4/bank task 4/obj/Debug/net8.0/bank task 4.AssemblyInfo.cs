@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bank task 4")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+692e651eff68a195057c7c54fa11b254351a72a7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3ec669522e5311d2c1002501446875523f66215")]
 [assembly: System.Reflection.AssemblyProductAttribute("bank task 4")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bank task 4")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
