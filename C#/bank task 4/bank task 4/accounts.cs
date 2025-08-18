@@ -16,7 +16,7 @@ namespace bank_task_4
         public decimal Balance { get; internal set; }
         public List<Transaction> Transactions { get; set; } = new List<Transaction>();
         public string type { get; private set; }
-        public DateTime LastInterestApplied { get; private set; }
+        public DateTime LastInterestApplied { get; private set; } = DateTime.Now;
 
         protected Account()
         {
