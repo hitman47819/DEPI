@@ -75,8 +75,10 @@ namespace bank_task_4
 
                                 switch (accChoice)
                                 {
-                                    case "1": // Add Account
-                                        Console.WriteLine("Choose Account Type: (1) Saving  (2) Current");
+                                    case "1":
+                                        try
+                                        {
+                                            Console.WriteLine("Choose Account Type: (1) Saving  (2) Current");
                                         string type = Console.ReadLine();
                                         if (type == "1")
                                         {
@@ -95,9 +97,17 @@ namespace bank_task_4
                                             Console.WriteLine($" Current Account created (#{currentAcc.AccountNumber})");
                                         }
                                         break;
-
-                                    case "2": // Deposit
-                                        Console.Write("Enter Account Number: ");
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.WriteLine($"Error: {ex.Message}");
+                                        
+                                        break;
+                                        }
+                                    case "2":
+                                        try
+                                        {
+                                            Console.Write("Enter Account Number: ");
                                         int depAcc = int.Parse(Console.ReadLine());
                                         var accDep = customer.Accounts.Find(a => a.AccountNumber == depAcc);
                                         if (accDep != null)
@@ -108,21 +118,39 @@ namespace bank_task_4
                                          }
                                         else Console.WriteLine(" Account not found.");
                                         break;
-
-                                    case "3": // Withdraw
-                                        Console.Write("Enter Account Number: ");
-                                        int wAcc = int.Parse(Console.ReadLine());
-                                        var accW = customer.Accounts.Find(a => a.AccountNumber == wAcc);
-                                        if (accW != null)
+                                        }
+                                        catch (Exception ex)
                                         {
-                                            Console.Write("Enter Amount: ");
-                                            decimal wAmt = decimal.Parse(Console.ReadLine());
-                                            Transaction.Withdraw(accW, wAmt);
-                                         }
-                                        else Console.WriteLine(" Account not found.");
+                                            Console.WriteLine($"Error: {ex.Message}");
+                                        
                                         break;
+                                        }
 
-                                    case "4": // Transfer
+                                    case "3":
+                                        Console.Write("Enter Account Number: ");
+                                        try
+                                        {
+                                            int wAcc = int.Parse(Console.ReadLine());
+                                            var accW = customer.Accounts.Find(a => a.AccountNumber == wAcc);
+                                            if (accW != null)
+                                            {
+                                                Console.Write("Enter Amount: ");
+                                                decimal wAmt = decimal.Parse(Console.ReadLine());
+                                                Transaction.Withdraw(accW, wAmt);
+                                            }
+                                            else Console.WriteLine(" Account not found.");
+                                            break;
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.WriteLine($"Error: {ex.Message}");
+                                        
+                                        break;
+                                        }
+                                        
+
+                                    case "4":
+                                        try { 
                                         Console.Write("Enter Source Account Number: ");
                                         int srcAcc = int.Parse(Console.ReadLine());
                                         Console.Write("Enter Destination Account Number: ");
@@ -155,15 +183,21 @@ namespace bank_task_4
                                          }
                                         else Console.WriteLine(" Invalid accounts for transfer.");
                                         break;
-
-                                    case "5": // List Accounts
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.WriteLine($"Error: {ex.Message}");
+                                        
+                                        break;
+                                            }
+                                    case "5":
                                         foreach (var acc in customer.Accounts)
                                             Console.WriteLine($"#{acc.AccountNumber} | Type: {acc.type} | Balance: {acc.Balance} | Opened: {acc.OpenTime}");
                                         Console.WriteLine($"   Total Balance: {customer.GetTotalBalance()}");
 
                                         break;
 
-                                    case "6": // List Transactions
+                                    case "6": 
                                         foreach (var acc in customer.Accounts)
                                         {
                                             Console.WriteLine($"\nAccount #{acc.AccountNumber} ({acc.type}) - Balance: {acc.Balance}");
@@ -175,17 +209,26 @@ namespace bank_task_4
                                         break;
 
                                     case "7":
-                                        DateTime newdate;
-                                        Console.WriteLine($"account details:\n{customer.Name} - {customer.Ssn} - {customer.BirthDate}");
-                                        Console.WriteLine("enter the new birthdate");
-                                        value = Console.ReadLine();
-                                        newdate=Convert.ToDateTime(value);
-                                        Console.WriteLine("enter the new name");
-                                        value = Console.ReadLine();
+                                        try
+                                        {
+                                            DateTime newdate;
+                                            Console.WriteLine($"account details:\n{customer.Name} - {customer.Ssn} - {customer.BirthDate}");
+                                            Console.WriteLine("enter the new birthdate");
+                                            value = Console.ReadLine();
+                                            newdate = Convert.ToDateTime(value);
+                                            Console.WriteLine("enter the new name");
+                                            value = Console.ReadLine();
 
-                                        customer.UpdateCustomer(value,newdate);
+                                            customer.UpdateCustomer(value, newdate);
 
+                                            break;
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.WriteLine($"Error: {ex.Message}");
+                                        
                                         break;
+                                        }
 
                                     case "8": manageAccounts = false; break;
 

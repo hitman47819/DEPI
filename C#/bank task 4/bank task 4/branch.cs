@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,25 +21,43 @@ namespace bank_task_4
             while (string.IsNullOrEmpty(Name))
             {
                 Console.WriteLine("Bank name cannot be empty. Please enter a valid name:");
+               
                 Name = Console.ReadLine();
             }
-            Id = Convert.ToInt32(Console.ReadLine());
-            bool validId = true ;
-            if (Id <= 0) validId = false;
-            while (!validId)
+            while (Name.All(char.IsDigit))
             {
-                Console.WriteLine("Please enter a positive bank ID:");
-                string input = Console.ReadLine();
-                if (int.TryParse(input, out int id) && id > 0)
+                Console.WriteLine("Bank name cannot be digits. Please enter a valid name:");
+                Name = Console.ReadLine();
+
+            }
+        start:
+            try
+            {
+                Id = Convert.ToInt32(Console.ReadLine());
+                bool validId = true;
+                if (Id <= 0) validId = false;
+                while (!validId)
                 {
-                    Id = id;
-                    validId = true;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid ID. Please enter a positive number.");
+                    Console.WriteLine("Please enter a positive bank ID:");
+                    string input = Console.ReadLine();
+                    if (int.TryParse(input, out int id) && id > 0)
+                    {
+                        Id = id;
+                        validId = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid ID. Please enter a positive number.");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            
+            goto start;
+            }
+
             customers = new List<Customer>();
 
             Console.WriteLine($"Welcome to {Name} bank \n what do you want to do:");
