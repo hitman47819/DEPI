@@ -38,7 +38,8 @@ namespace bank_task_4
         {
             if (!string.IsNullOrEmpty(newName))
                 Name = newName;
-            BirthDate = newDob;
+                BirthDate = newDob;
+            Console.WriteLine($"the new credintials:{Name} - {Ssn} - {BirthDate} - Total balance: {GetTotalBalance()}");
         }
 
         public static bool ValidSSN(string nationalID)

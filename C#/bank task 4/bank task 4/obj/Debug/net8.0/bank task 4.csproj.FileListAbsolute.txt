@@ -1,0 +1,15 @@
+D:\depi\C#\bank task 4\bank task 4\bin\Debug\net8.0\bank task 4.exe
+D:\depi\C#\bank task 4\bank task 4\bin\Debug\net8.0\bank task 4.deps.json
+D:\depi\C#\bank task 4\bank task 4\bin\Debug\net8.0\bank task 4.runtimeconfig.json
+D:\depi\C#\bank task 4\bank task 4\bin\Debug\net8.0\bank task 4.dll
+D:\depi\C#\bank task 4\bank task 4\bin\Debug\net8.0\bank task 4.pdb
+D:\depi\C#\bank task 4\bank task 4\obj\Debug\net8.0\bank task 4.GeneratedMSBuildEditorConfig.editorconfig
+D:\depi\C#\bank task 4\bank task 4\obj\Debug\net8.0\bank task 4.AssemblyInfoInputs.cache
+D:\depi\C#\bank task 4\bank task 4\obj\Debug\net8.0\bank task 4.AssemblyInfo.cs
+D:\depi\C#\bank task 4\bank task 4\obj\Debug\net8.0\bank task 4.csproj.CoreCompileInputs.cache
+D:\depi\C#\bank task 4\bank task 4\obj\Debug\net8.0\bank task 4.sourcelink.json
+D:\depi\C#\bank task 4\bank task 4\obj\Debug\net8.0\bank task 4.dll
+D:\depi\C#\bank task 4\bank task 4\obj\Debug\net8.0\refint\bank task 4.dll
+D:\depi\C#\bank task 4\bank task 4\obj\Debug\net8.0\bank task 4.pdb
+D:\depi\C#\bank task 4\bank task 4\obj\Debug\net8.0\bank task 4.genruntimeconfig.cache
+D:\depi\C#\bank task 4\bank task 4\obj\Debug\net8.0\ref\bank task 4.dll

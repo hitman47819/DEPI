@@ -68,7 +68,8 @@ namespace bank_task_4
                                 Console.WriteLine("4. Transfer");
                                 Console.WriteLine("5. List Accounts");
                                 Console.WriteLine("6. List Transactions");
-                                Console.WriteLine("7. Back");
+                                Console.WriteLine("7. update account");
+                                Console.WriteLine("8. Back");
 
                                 string accChoice = Console.ReadLine();
 
@@ -104,8 +105,7 @@ namespace bank_task_4
                                             Console.Write("Enter Amount: ");
                                             decimal depAmt = decimal.Parse(Console.ReadLine());
                                             Transaction.Deposit(accDep, depAmt);
-                                            Console.WriteLine(" Deposit successful.");
-                                        }
+                                         }
                                         else Console.WriteLine(" Account not found.");
                                         break;
 
@@ -118,8 +118,7 @@ namespace bank_task_4
                                             Console.Write("Enter Amount: ");
                                             decimal wAmt = decimal.Parse(Console.ReadLine());
                                             Transaction.Withdraw(accW, wAmt);
-                                            Console.WriteLine(" Withdraw successful.");
-                                        }
+                                         }
                                         else Console.WriteLine(" Account not found.");
                                         break;
 
@@ -153,8 +152,7 @@ namespace bank_task_4
                                         if (source != null && destination != null)
                                         {
                                             Transaction.Transfer(source, destination, tAmt);
-                                            Console.WriteLine(" Transfer successful.");
-                                        }
+                                         }
                                         else Console.WriteLine(" Invalid accounts for transfer.");
                                         break;
 
@@ -176,7 +174,20 @@ namespace bank_task_4
 
                                         break;
 
-                                    case "7": manageAccounts = false; break;
+                                    case "7":
+                                        DateTime newdate;
+                                        Console.WriteLine($"account details:\n{customer.Name} - {customer.Ssn} - {customer.BirthDate}");
+                                        Console.WriteLine("enter the new birthdate");
+                                        value = Console.ReadLine();
+                                        newdate=Convert.ToDateTime(value);
+                                        Console.WriteLine("enter the new name");
+                                        value = Console.ReadLine();
+
+                                        customer.UpdateCustomer(value,newdate);
+
+                                        break;
+
+                                    case "8": manageAccounts = false; break;
 
                                     default: Console.WriteLine(" Invalid choice."); break;
                                 }
