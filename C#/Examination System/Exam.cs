@@ -126,7 +126,6 @@ namespace Examination_System
 
         public bool IsRunning()
         {
-            return true;
             return DateTime.Now >= StartTime && DateTime.Now <= StartTime.Add(Duration);
         }
 
