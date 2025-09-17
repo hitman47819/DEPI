@@ -1,0 +1,92 @@
+ /* style.css */
+
+/* ====== Base Reset ====== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Manrope', sans-serif;
+  background-color: hsl(218, 23%, 16%); /* dark background */
+  color: hsl(193, 38%, 86%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ====== Advice Card ====== */
+#main-box {
+  background-color: hsl(217, 19%, 24%);
+  border-radius: 15px;
+  max-width: 500px;
+  width: 90%;
+  padding: 2.5rem 2rem 3.5rem;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.advive-id {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: hsl(150, 100%, 66%);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.advice {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: hsl(193, 38%, 86%);
+  margin-bottom: 1.5rem;
+}
+
+/* Divider SVG */
+.image svg {
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+/* ====== Dice Button ====== */
+.random {
+  background-color: hsl(150, 100%, 66%);
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  left: 50%;
+  bottom: -32.5px;
+  transform: translateX(-50%);
+  cursor: pointer;
+
+  /* add these/keep them */
+  border-radius: 50%;                /* <-- ensures a perfect circle   */
+  display: flex;                     /* center the icon inside         */
+  justify-content: center;
+  align-items: center;
+
+  transition: box-shadow 0.3s ease;
+}
+
+.random:hover {
+  box-shadow: 0 0 25px hsl(150, 100%, 66%), 0 0 50px hsl(150, 100%, 66%);
+}
+
+.image-btn svg {
+  pointer-events: none; /* so the click is on the whole circle */
+}
+
+/* ====== Attribution ====== */
+.attribution {
+  margin-top: 4rem;
+  font-size: 0.75rem;
+  color: hsl(217, 19%, 60%);
+}
+.attribution a {
+  color: hsl(150, 100%, 66%);
+  text-decoration: none;
+}
