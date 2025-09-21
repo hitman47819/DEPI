@@ -1,0 +1,86 @@
+/* extra small enhancements outside tailwind */
+:root{--accent: #06b6d4;}
+
+/* stat card */
+.stat-card{background:linear-gradient(135deg, rgba(124,58,237,0.12), rgba(6,182,212,0.06)); padding:18px; border-radius:12px; box-shadow:0 8px 30px rgba(2,6,23,0.6);}
+
+/* small entrance animation classes */
+.fade-up{transform:translateY(16px);opacity:0;transition:all .6s cubic-bezier(.2,.9,.2,1);} 
+.fade-up.in{transform:none;opacity:1}
+
+/* nav link active */
+.nav-link{color:rgb(203 213 225 / 0.9);transition:all .25s}
+.nav-link.active{background:linear-gradient(90deg,var(--accent),#7c3aed); color:white; font-weight:600}
+
+/* buttons */
+.btn-primary{background:linear-gradient(90deg,var(--accent),#7c3aed); color:white; padding:8px 12px; border-radius:10px; font-weight:600}
+.btn-ghost{background:transparent; border:1px solid rgba(255,255,255,0.05); color:inherit; padding:8px 12px; border-radius:10px}
+
+/* small responsive tweaks */
+@media (max-width:768px){
+  #nav{display:none}
+}
+
+
+
+/* fade-in helper used for contact card */
+.fade-in{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease;}
+.fade-in.in{opacity:1; transform:translateY(0);}
+
+/* make contact email prevent wrapping and allow horizontal scroll on very small screens */
+#contactEmail{white-space:nowrap;}
+
+/* small style for download button icon spacing fix */
+#downloadPdfBtn svg{margin-right:8px;}
+
+
+/* spacing between skills and next section */
+#skills{margin-bottom:48px}
+
+
+
+/* card-style used for sections to match contact card look */
+.card-style{
+  background: linear-gradient(180deg, rgba(15,23,36,0.6), rgba(8,12,20,0.45));
+  border: 1px solid rgba(148,163,184,0.08);
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  border-radius: 12px;
+}
+
+/* animate-card - slide and fade animation for internal cards */
+.animate-card{opacity:0; transform: translateY(16px); transition: transform .64s cubic-bezier(.2,.9,.2,1), opacity .5s ease;}
+.animate-card.in{opacity:1; transform:none;}
+
+/* make contact grid items a bit wider to ensure email fits on one line */
+[data-slot="card"] .grid > div{min-width:200px}
+
+/* Light mode overrides (when <html> has class 'light') */
+html.light body{
+  background: linear-gradient(to bottom, #f8fafc, #eef2ff) !important;
+  color: #0b1220;
+}
+html.light .card-style{
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid rgba(15,23,36,0.06);
+  color: #0b1220;
+  box-shadow: 0 8px 20px rgba(16,24,40,0.06);
+}
+html.light .nav{ background: rgba(255,255,255,0.8) !important; color: #0b1220; }
+html.light .nav .nav-link{ color: #0b1220; }
+html.light .btn-primary{ color: white; }
+html.light .btn-ghost{ border-color: rgba(2,6,23,0.06); color: #0b1220; background: transparent; }
+body {
+  background-color: #f5f6f7; /* soft neutral */
+}
+.certificate-slide {
+  position: absolute;            /* stack slides on top of each other */
+  top: 0; left: 0; width: 100%;
+  opacity: 0;                     /* hidden by default */
+  transition: opacity 0.5s ease;  /* fade timing */
+}
+.certificate-slide.active {
+  opacity: 1;                     /* fade in */
+  position: relative;             /* put the active one back in flow */
+}
+
