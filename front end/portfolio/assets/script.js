@@ -1,12 +1,4 @@
-// data (taken from your CV)
-const cvText = `Mohamed Ali Mohamed
-BACK-END DEVELOPER (.NET)
-Qalyub, Qalyubia | +201068643041 | mohamedabdelbaky365@gmail.com | linkedin.com/in/mohamed-ali-farouk47 | github.com/hitman47819
 
-Objective:
-Motivated fourth-year Computer Science student...`;
-
-// theme toggle
 const themeBtn = document.getElementById('themeBtn');
 function setLightIcon(){
   themeBtn.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>`;
@@ -16,7 +8,6 @@ function setDarkIcon(){
 }
 
 function isDark(){ return document.documentElement.classList.contains('dark'); }
-// initialize according to system prefers
 if(window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches){ document.documentElement.classList.add('dark'); setDarkIcon(); } else { setLightIcon(); }
 
 themeBtn.addEventListener('click', ()=>{
@@ -43,20 +34,16 @@ themeBtn.addEventListener('click', ()=>{
     showSlide(index);
   });
 
-  // initial view
   showSlide(index);
 })();
 
 
-// Fill skills with chips and add intersection   animations
-// ---- All your chip arrays ----
 const langs = ['C#','Java','Python','C++','C','SQL'];
 const dotnet = ['ASP.NET Core MVC','ASP.NET Core Web APIs','Entity Framework','LINQ','Windows Forms'];
 const tools = ['MySQL','SQL Server','Visual Studio','Git','GitHub'];
 const Methodologies = ['Agile','Alogritm','Scrum','OOP','MVC Architecture','Project Management','Problem Solving'];
 const others = ['Communication','Leadership','Teamwork'];
 
-// Languages now includes level
 const Languages = [
   { name: 'Arabic',  level: 'Native' },
   { name: 'English', level: 'B2' },
@@ -64,7 +51,6 @@ const Languages = [
   { name: 'Italian', level: 'A2' }
 ];
 
-// ---- Generic chip maker for the old single–word chips ----
 function makeChips(arr, containerId) {
   const c = document.getElementById(containerId);
   if (!c) return;
@@ -79,7 +65,6 @@ function makeChips(arr, containerId) {
   });
 }
 
-// ---- New function for language + level ----
 function makeLanguageChips(arr, containerId) {
   const c = document.getElementById(containerId);
   if (!c) return;
@@ -103,7 +88,6 @@ function makeLanguageChips(arr, containerId) {
   });
 }
 
-// ---- Fire everything after DOM is ready ----
 document.addEventListener('DOMContentLoaded', () => {
   makeChips(langs, 'langs');
   makeChips(dotnet, 'dotnet');
@@ -113,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
   makeLanguageChips(Languages, 'Languages');
 });
 
-// Observe sections to highlight nav and animate entries
 const sections = document.querySelectorAll('main section');
 const navLinks = document.querySelectorAll('.nav-link');
 
@@ -124,11 +107,9 @@ const observer = new IntersectionObserver((entries)=>{
     if(entry.isIntersecting){
       navLinks.forEach(n=>n.classList.remove('active'));
       if(link) link.classList.add('active');
-      // animate children (.fade-up)
       entry.target.querySelectorAll('.fade-up').forEach((el,i)=>{
         setTimeout(()=>el.classList.add('in'), i*80);
       });
-      // animate skill chips
       entry.target.querySelectorAll('span').forEach((chip, idx)=>{
         chip.style.transition = `transform .5s cubic-bezier(.2,.9,.2,1) ${idx*50}ms, opacity .4s ${idx*50}ms`;
         chip.style.transform = 'translateY(0)'; chip.style.opacity=1;
@@ -142,7 +123,6 @@ const observer = new IntersectionObserver((entries)=>{
 }, {threshold:0.45});
 sections.forEach(s=>observer.observe(s));
 
-// Smooth nav clicks
 document.querySelectorAll('a.nav-link, a[href^="#"]').forEach(a=>{
   a.addEventListener('click', (e)=>{
     const href = a.getAttribute('href');
@@ -152,26 +132,15 @@ document.querySelectorAll('a.nav-link, a[href^="#"]').forEach(a=>{
   });
 });
 
-// initial small entrance for main content
 document.querySelectorAll('main section').forEach((s,i)=>{ s.classList.add('fade-up'); setTimeout(()=>s.classList.add('in'), 220 + i*80); });
 
-// Download CV (create simple text file)
-document.getElementById('downloadCV').addEventListener('click', ()=>{
-  const b = new Blob([cvText], {type: 'text/plain'});
-  const url = URL.createObjectURL(b); const a = document.createElement('a'); a.href = url; a.download = 'Mohamed_Ali_CV.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-});
+ 
+ 
 
-// second download button
-document.getElementById('dlCv2')?.addEventListener('click', ()=>{
-  document.getElementById('downloadCV').click();
-});
-
-// small enhancement: lazy load real photo if user replaces
 const photo = document.getElementById('photo'); if(photo) photo.loading = 'lazy';
 
 
 
-// ---- Contact card fade-in observer + button handlers ----
 const contactCard = document.getElementById('contactCard');
 if(contactCard){
   const contactObserver = new IntersectionObserver((entries)=>{
@@ -182,7 +151,6 @@ if(contactCard){
   contactObserver.observe(contactCard);
 }
 
-// Send Email button: opens mail client
 const sendEmailBtn = document.getElementById('sendEmailBtn');
 if(sendEmailBtn){
   sendEmailBtn.addEventListener('click', ()=>{
@@ -202,13 +170,11 @@ if(downloadPdfBtn){
   });
 }
 
-// ---- Theme toggle persistence improvement ----
-// prefer stored user preference, else system
+
 const storedTheme = localStorage.getItem('theme');
 if(storedTheme === 'dark'){ document.documentElement.classList.add('dark'); setDarkIcon(); }
 else if(storedTheme === 'light'){ document.documentElement.classList.remove('dark'); setLightIcon(); }
 
-// override click to set localStorage
 themeBtn.addEventListener('click', ()=>{
   document.documentElement.classList.toggle('dark');
   if(isDark()){ setDarkIcon(); localStorage.setItem('theme','dark'); } 
@@ -217,7 +183,6 @@ themeBtn.addEventListener('click', ()=>{
 
 
 
-// Observe animate-card elements to add 'in' class on intersection
 const animCards = document.querySelectorAll('.animate-card');
 const animObserver = new IntersectionObserver((entries)=>{
   entries.forEach((ent, idx)=>{
@@ -229,7 +194,6 @@ const animObserver = new IntersectionObserver((entries)=>{
 },{threshold: 0.18});
 animCards.forEach(c=>animObserver.observe(c));
 
-// Theme toggle: ensure both 'dark' and 'light' classes are used and persisted
 function applyTheme(theme){
   document.documentElement.classList.remove('dark','light');
   if(theme === 'dark') document.documentElement.classList.add('dark');
@@ -239,7 +203,6 @@ function applyTheme(theme){
   localStorage.setItem('theme', theme);
 }
 
-// initialize theme from storage or system
 const stored = localStorage.getItem('theme');
 if(stored) applyTheme(stored);
 else {
@@ -247,7 +210,6 @@ else {
   else applyTheme('light');
 }
 
-// override themeBtn click to toggle
 themeBtn.addEventListener('click', ()=>{
   const nowDark = document.documentElement.classList.contains('dark');
   applyTheme(nowDark? 'light' : 'dark');
